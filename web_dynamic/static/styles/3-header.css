@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+/* Basic header styling */
+header {
+  background-color: #FFFFFF; /* White background */
+  background-image: url("../images/logo.png"); /* Logo image */
+  background-repeat: no-repeat; /* Prevent repeating of the background image */
+  background-position: 20px 50%; /* Position the logo image */
+  height: 70px; /* Height of the header */
+  width: 100%; /* Full width */
+  border-bottom: 1px solid #CCCCCC; /* Light gray border at the bottom */
+}
+
+/* Styling for the API status indicator within the header */
+header #api_status {
+  width: 40px; /* Width of the status indicator */
+  height: 40px; /* Height of the status indicator */
+  border-radius: 50%; /* Make the status indicator a circle */
+  background-color: #cccccc; /* Default gray background color */
+  position: absolute; /* Positioning relative to the header */
+  right: 30px; /* Position 30px from the right edge of the header */
+  top: 50%; /* Vertically align to the center of the header */
+  transform: translateY(-50%); /* Center the circle vertically */
+}
+
+/* Class to indicate that the API is online */
+header #api_status.available {
+  background-color: #ff545f; /* Change to red when API status is available */
+}
+
+/** Additional header styles can be appended here if needed */
