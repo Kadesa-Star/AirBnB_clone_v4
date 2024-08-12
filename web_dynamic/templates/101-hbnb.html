@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>101-HBnB</title>
+    <!-- Import CSS stylesheets here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/101-hbnb.css') }}">
+    <!-- Import JavaScript file -->
+    <script src="{{ url_for('static', filename='scripts/101-hbnb.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Navigation content, if any -->
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="filters">
+                <!-- Filters for amenities, states, and cities -->
+                <h4>Filters</h4>
+                <div class="amenities">
+                    <h4>Amenities</h4>
+                    <ul>
+                        {% for amenity in amenities %}
+                        <li>
+                            <input type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}">
+                            {{ amenity.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="locations">
+                    <h4>States</h4>
+                    <ul>
+                        {% for state, cities in states %}
+                        <li>
+                            <input type="checkbox" data-id="{{ state.id }}" data-name="{{ state.name }}">
+                            {{ state.name }}
+                            <ul>
+                                {% for city in cities %}
+                                <li>
+                                    <input type="checkbox" data-id="{{ city.id }}" data-name="{{ city.name }}">
+                                    {{ city.name }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button type="button">Search</button>
+            </div>
+
+            <section class="places">
+                <!-- Places will be dynamically inserted here -->
+            </section>
+
+            <div class="reviews-container">
+                <h2>Reviews <span id="toggle-reviews" data-action="show">show</span></h2>
+                <!-- Reviews will be dynamically inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer content, if any -->
+    </footer>
+</body>
+</html>
