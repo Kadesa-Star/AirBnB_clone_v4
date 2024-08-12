@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>100-HBNB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts/100-hbnb.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>100-HBNB</h1>
+        <div id="api_status" class=" unavailable"></div>
+    </header>
+    <main>
+        <div class="filters">
+            <div class="amenities">
+                <h4>Amenity filters</h4>
+                <!-- Amenity checkboxes go here -->
+                {% for amenity in amens.values() %}
+                <input type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}">
+                {{ amenity.name }}
+                {% endfor %}
+            </div>
+            <div class="locations">
+                <h4>Location filters</h4>
+                <!-- State checkboxes -->
+                <ul>
+                    {% for state in states.values() %}
+                    <li>
+                        <input type="checkbox" data-id="{{ state.id }}" data-name="{{ state.name }}" style="margin-left: 10px;">
+                        {{ state.name }}
+                        <ul>
+                            <!-- City checkboxes -->
+                            {% for city in state.cities %}
+                            <li>
+                                <input type="checkbox" data-id="{{ city.id }}" data-name="{{ city.name }}" style="margin-left: 10px;">
+                                {{ city.name }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <section class="places">
+            <!-- Places will be injected here by JavaScript -->
+        </section>
+        <div class="container">
+            <button>Search</button>
+        </div>
+    </main>
+</body>
+</html>
